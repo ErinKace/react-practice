@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import MovieCard from "./components/MovieCard.tsx"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const movieCount = 1;
 
   return (
-      <div>
-        <p>Hello, World!</p>
-      </div>
+      <> {movieCount === 1 &&
+        <MovieCard movie={{title: "Erin", url: "", release_date: "2025", favorite: false}}/>
+        }
+      </>
   )
 }
 
