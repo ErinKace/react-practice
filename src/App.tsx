@@ -1,4 +1,4 @@
-import './App.css';
+import './css/App.css';
 import Home from "./pages/Home.tsx";
 import Favorites from "./pages/Favorites.tsx"
 import NavBar from './components/NavBar.tsx';

@@ -1,4 +1,5 @@
 import type { Movie } from "../models/MovieModel"
+import "../css/MovieCard.css"
 
 function MovieCard(props: {movie: Movie}) {
     function onFavoriteClick() {

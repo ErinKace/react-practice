@@ -1,4 +1,5 @@
 import MovieCard from "../components/MovieCard";
+import "../css/Home.css"
 import type { Movie } from "../models/MovieModel";
 import { useState, type SyntheticEvent } from "react";
 
