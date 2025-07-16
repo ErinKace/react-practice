@@ -1,15 +1,22 @@
-import './App.css'
-import MovieCard from "./components/MovieCard.tsx"
+import './App.css';
+import Home from "./pages/Home.tsx";
+import Favorites from "./pages/Favorites.tsx"
+import NavBar from './components/NavBar.tsx';
+import {Routes, Route} from "react-router-dom"
 
 function App() {
 
-  const movieCount = 1;
-
   return (
-      <> {movieCount === 1 &&
-        <MovieCard movie={{title: "Erin", url: "", release_date: "2025", favorite: false}}/>
-        }
-      </>
+    <div>
+      <NavBar/>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/favorites" element= {<Favorites/>}/>
+        </Routes>
+      </main>
+    </div>
+
   )
 }
 
