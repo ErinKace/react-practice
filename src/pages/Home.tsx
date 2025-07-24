@@ -1,17 +1,29 @@
 import MovieCard from "../components/MovieCard";
 import "../css/Home.css"
 import type { Movie } from "../models/MovieModel";
-import { useState, type SyntheticEvent } from "react";
+import { useState, type SyntheticEvent, useEffect } from "react";
+import { searchMovies, getPopularMovies } from "../services/api";
 
 function Home() {
     const [searchQuery, setSearchQuery] = useState("");
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState<null | string>(null);
+    const [loading, setLoading] = useState(true);
 
-    const movies : Movie[] = [
-        {id:1, title: "Kpop Demon Hunters", url: "", release_date: "2025", favorite: false},
-        {id:2, title: "Sinners", url: "", release_date: "2025", favorite: false},
-        {id:3, title: "Dungeons & Dragons", url: "", release_date: "2022", favorite: false},
-        {id:4, title: "West Side Story", url: "", release_date: "1960", favorite: false},
-    ]
+    useEffect(() => {
+        const loadPopularMovies = async () => {
+            try {
+                const popularMovies = await getPopularMovies()
+                setMovies(popularMovies)
+            } catch (err) {
+                console.log(err)
+                setError("Failed to load movies");
+            }
+            finally {
+                setLoading(false)
+            }
+        }
+    }, [])
 
     const handleSearch = (e: SyntheticEvent) => {
         e.preventDefault();
@@ -29,7 +41,7 @@ function Home() {
             <button type="submit" className="search-button">Submit</button>
         </form>
         <div className="movies-grid">
-            {movies.map((this_movie) => (
+            {movies.map((this_movie: Movie) => (
                  this_movie.title.toLowerCase().startsWith(searchQuery.toLowerCase()) && <MovieCard movie={this_movie} key={this_movie.id}/>
                 ))}
         </div>
