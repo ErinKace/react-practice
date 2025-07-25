@@ -23,6 +23,8 @@ function Home() {
                 setLoading(false)
             }
         }
+
+        loadPopularMovies()
     }, [])
 
     const handleSearch = (e: SyntheticEvent) => {
@@ -42,7 +44,7 @@ function Home() {
         </form>
         <div className="movies-grid">
             {movies.map((this_movie: Movie) => (
-                 this_movie.title.toLowerCase().startsWith(searchQuery.toLowerCase()) && <MovieCard movie={this_movie} key={this_movie.id}/>
+                 <MovieCard movie={this_movie} key={this_movie.id}/>
                 ))}
         </div>
     </div>
