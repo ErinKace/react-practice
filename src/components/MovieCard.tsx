@@ -8,7 +8,7 @@ function MovieCard(props: {movie: Movie}) {
 
     return <div className="movie-card">
         <div className="movie-poster">
-            <img src={`https://images.tmdb.org/t/p/w500${props.movie.file_path}`} alt={props.movie.title}/>
+            <img src={`https://images.tmdb.org/t/p/w500${props.movie.poster_path}`} alt={props.movie.title}/>
             <div className="movie-overlay">
                 <button className="favorite-btn" onClick={onFavoriteClick}>&hearts;</button>
             </div>
