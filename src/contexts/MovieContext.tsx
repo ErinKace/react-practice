@@ -1,11 +1,9 @@
-import { createContext, useState, useContext, useEffect } from "react"
+import { createContext, useState, useEffect } from "react"
 import { type MovieContextType, type Movie } from "../models/MovieModel"
 
-const MovieContext = createContext<MovieContextType | null>(null);
+export const MovieContext = createContext<MovieContextType | null>(null);
 
-export const useMovieContext = () => useContext(MovieContext);
-
-export const MovieProvider = (children: React.ReactNode) => {
+export const MovieProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
     const [favorites, setFavorites] = useState<Movie[]>([])
 
     useEffect(() => {

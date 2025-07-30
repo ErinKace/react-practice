@@ -1,12 +1,14 @@
 import './css/App.css';
 import Home from "./pages/Home.tsx";
-import Favorites from "./pages/Favorites.tsx"
+import Favorites from "./pages/Favorites.tsx";
 import NavBar from './components/NavBar.tsx';
-import {Routes, Route} from "react-router-dom"
+import {Routes, Route} from "react-router-dom";
+import { MovieProvider } from './contexts/MovieContext.tsx';
 
 function App() {
 
   return (
+    <MovieProvider>
     <div>
       <NavBar/>
       <main className="main-content">
@@ -16,6 +18,7 @@ function App() {
         </Routes>
       </main>
     </div>
+    </MovieProvider>
   )
 }
 
